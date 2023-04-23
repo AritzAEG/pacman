@@ -1,0 +1,16 @@
+html, body{
+  background-image: url("../images/backgroundImage.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+canvas {
+  border: dotted black;
+  border-style: solid;
+  background-color: black;
+  margin-left: 13%;
+  margin-top: 1%;
+  border-radius: 1%;
+}
