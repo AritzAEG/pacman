@@ -89,7 +89,7 @@ const Block = {
 }
 
 //Anchura de los sprites
-const SPRITE_SIZE = 30;
+const SPRITE_SIZE = 40;
 
 //Numero de sprites a dibujar en pantalla
 const NUM_SPRITES = 1;
@@ -98,9 +98,6 @@ const NUM_SPRITES = 1;
 const FPS = 30;
 
 const BRICK_SIZE = 40;
-
-xPos = 60;
-yPos = 60;
 
 //Tamaño de los sprites
 const SPRITE_SIZE_X = 30;

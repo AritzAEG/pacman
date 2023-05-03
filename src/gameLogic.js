@@ -63,28 +63,29 @@ function playerMovement()
 {
     if (action.moveLeft === true)
     {
-        sprites[0].xPos--;
+        sprites[0].xPos -= 3;
         sprites[0].direction = Direction.LEFT;
         sprites[0].colTile = 1;
         sprites[0].filTile = 15;
+        sprites[0].speed = 5;
     }
     else if (action.moveRight === true)
     {
-        sprites[0].xPos++;
+        sprites[0].xPos += 3;
         sprites[0].direction = Direction.RIGHT;
         sprites[0].colTile = 1;
         sprites[0].filTile = 14;
     }
     else if (action.moveUp === true)
     {
-        sprites[0].yPos--;
+        sprites[0].yPos -= 3;
         sprites[0].direction = Direction.UP;
         sprites[0].colTile = 1;
         sprites[0].filTile = 13;
     }
     else if (action.moveDown === true)
     {
-        sprites[0].yPos++;
+        sprites[0].yPos += 3;
         sprites[0].direction = Direction.DOWN;
         sprites[0].colTile = 1;
         sprites[0].filTile = 12;

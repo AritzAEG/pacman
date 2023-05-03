@@ -55,7 +55,6 @@ function gameplay()
         ctx.font = "30px Emulogic";
         ctx.fillText("MAX SCORE:", 1100, 870)
         renderMap();
-        renderMapPuntos();
         drawSprites();
     }
     else if (vidas == 2)
@@ -153,8 +152,8 @@ function drawSprites()
 function renderSprite(sprite)
 {
     //Calculamos la posición del tile de inicio
-    const xPosInit = sprite.colTile * SPRITE_SIZE_X;
-    const yPosInit = sprite.filTile * SPRITE_SIZE_Y;
+    const xPosInit = sprite.colTile * SPRITE_SIZE;
+    const yPosInit = sprite.filTile * SPRITE_SIZE;
 
     const xTile = xPosInit;
     const yTile = yPosInit;
@@ -170,24 +169,4 @@ function renderSprite(sprite)
         xPos, yPos,                 //The destination x and y position
         sprite.xSize, sprite.ySize  //The destination height and width
     );
-}
-
-function renderMapPuntos()
-{
-    
-    for (i = 0; i < 21; ++i)
-    {
-        for (j = 0; j < 36; j++)
-        {
-           if (level1Colisions[i][j] == 6)
-           {
-            //Dibujamos el nuevo fotograma del sprite en la posición adecuada
-            const xTile = j * BRICK_SIZE;
-            const yTile = i * BRICK_SIZE;
-            const xPos = j * BRICK_SIZE;
-            const yPos = i * BRICK_SIZE;
-            ctx.drawImage(tileSet4, xTile, yTile);
-           }
-        }
-    }
 }

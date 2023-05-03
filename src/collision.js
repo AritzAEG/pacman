@@ -26,16 +26,7 @@ function collision()
     {
         for (j = 0; j < 36; j++)
         {
-            const xTile = j * BRICK_SIZE;
-            const xTile2 = (j * BRICK_SIZE) + 40;
-            const yTile = i * BRICK_SIZE;
-            const yTile2 = (i * BRICK_SIZE) + 40;
-            //console.log(action.moveLeft)
-            if (xTile === sprites[0].xPos || xTile2 === sprites[0].xPos)
-            {
-                action.moveLeft = false;
-                
-            }
+           
         }
     }
 }

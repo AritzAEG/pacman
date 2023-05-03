@@ -33,7 +33,6 @@ function init()
     loadSprites();
     loadImagenCarga();
     loadVidas();
-    loadPunto();
 
     // Start the first frame request
     window.requestAnimationFrame(gameLoop);
@@ -75,31 +74,6 @@ function loadVidas()
     assetsToLoad.push(tileSet3);
 }
 
-function loadPunto()
-{
-    tileSet4 = new Image();
-    tileSet4.addEventListener("load", loadHandler, false);
-    tileSet4.src = "./images/punto.png";  //Ojo que la ruta es relativa al HTML, no al JS
-    assetsToLoad.push(tileSet4);
-
-    tileSet5 = new Image();
-    tileSet5.addEventListener("load", loadHandler, false);
-    tileSet5.src = "./images/Negro.png";  //Ojo que la ruta es relativa al HTML, no al JS
-    assetsToLoad.push(tileSet5);
-}
-
-function loadPrueba() 
-{
-    let tilePrueba;
-    //Mapa
-    tilePrueba = new Image();
-    tilePrueba.addEventListener("load", loadHandler, false);
-    tilePrueba.src = "./images/Puntos.png";  
-    prueba.push(tilePrueba);
-    assetsToLoad.push(tilePrueba);
-}
-
-
 //Función que se llama cada vez que se carga un activo
 function loadHandler()
 {
@@ -129,8 +103,8 @@ function initSprites()
         760,                   //Posición inicial en X
         160,                   //Posición inicial en Y
         50,
-        30,                     //Tamaño total del sprite en X
-        30,                     //Tamaño total del sprite en Y 
+        SPRITE_SIZE,                     //Tamaño total del sprite en X
+        SPRITE_SIZE,                     //Tamaño total del sprite en Y 
         10,
         6,
         1,                     //Columna de inicio
@@ -146,8 +120,8 @@ function initSprites()
         605,                   //Posición inicial en X
         405,                  //Posición inicial en Y
         50,
-        30,                     //Tamaño total del sprite en X
-        30,                     //Tamaño total del sprite en Y 
+        SPRITE_SIZE,                     //Tamaño total del sprite en X
+        SPRITE_SIZE,                     //Tamaño total del sprite en Y 
         10,
         6,
         0,                     //Columna de inicio
@@ -163,8 +137,8 @@ function initSprites()
         725,                   //Posición inicial en X
         405,                   //Posición inicial en Y
         50,
-        30,                     //Tamaño total del sprite en X
-        30,                     //Tamaño total del sprite en Y 
+        SPRITE_SIZE,                     //Tamaño total del sprite en X
+        SPRITE_SIZE,                     //Tamaño total del sprite en Y 
         10,
         6,
         0,                     //Columna de inicio
@@ -180,8 +154,8 @@ function initSprites()
         605,                   //Posición inicial en X
         525,                   //Posición inicial en Y
         50,
-        30,                     //Tamaño total del sprite en X
-        30,                     //Tamaño total del sprite en Y 
+        SPRITE_SIZE,                     //Tamaño total del sprite en X
+        SPRITE_SIZE,                     //Tamaño total del sprite en Y 
         10,
         6,
         0,                     //Columna de inicio
@@ -197,12 +171,12 @@ function initSprites()
         245,                   //Posición inicial en X
         445,                   //Posición inicial en Y
         50,
-        30,                     //Tamaño total del sprite en X
-        30,                     //Tamaño total del sprite en Y 
+        SPRITE_SIZE,                     //Tamaño total del sprite en X
+        SPRITE_SIZE,                     //Tamaño total del sprite en Y 
         10,
         6,
-        1,                     //Columna de inicio
-        16,
+        0,                     //Columna de inicio
+        17,
         0,
         0,
         Direction.INVALID,
@@ -214,15 +188,53 @@ function initSprites()
         1165,                   //Posición inicial en X
         250,                   //Posición inicial en Y
         0,
-        30,                     //Tamaño total del sprite en X
-        30,                     //Tamaño total del sprite en Y 
+        SPRITE_SIZE,                     //Tamaño total del sprite en X
+        SPRITE_SIZE,                     //Tamaño total del sprite en Y 
         0,
         0,
-        1,                     //Columna de inicio
-        16,
+        0,                     //Columna de inicio
+        17,
         0,
         0,
         Direction.INVALID,
     );
     sprites.push(Fruta2);
+
+    renderMapPuntos();
+}
+
+function renderMapPuntos()
+{   
+    for (i = 0; i < 21; ++i)
+    {
+        for (j = 0; j < 36; j++)
+        {
+           if (level1Colisions[i][j] == 6)
+           {
+                if ((i == 4 && j == 19) || (i == 10 && j == 15) || (i == 10 && j == 18) || (i == 13 && j == 15) || (i == 1 && j == 13) || (i == 6 && j == 29))
+                {
+
+                }
+                else
+                {
+                    const punto = new Sprite(
+                        Type.id = Type.PUNTO,             //Tipo de Sprite
+                        j * SPRITE_SIZE,                   //Posición inicial en X
+                        i * SPRITE_SIZE,                   //Posición inicial en Y
+                        0,
+                        30,                     //Tamaño total del sprite en X
+                        30,                     //Tamaño total del sprite en Y 
+                        0,
+                        0,
+                        1,                     //Columna de inicio
+                        16,
+                        0,
+                        0,
+                        Direction.INVALID,
+                    );
+                    sprites.push(punto)
+                }
+           }
+        }
+    }
 }

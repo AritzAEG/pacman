@@ -5,11 +5,11 @@ class Sprite
         this.id             = id;                     //Tipo de Sprite
         this.xPos           = xPos;                   //Posición inicial en X
         this.yPos           = yPos;                   //Posición inicial en Y
-        this.speed          = speed;
+        this.speed          = speed;                  //Velocidad del sprite
         this.xSize          = xSize;                  //Tamaño total del sprite en X
         this.ySize          = ySize;                  //Tamaño total del sprite en Y
-        this.xOffset        = xOffset;
-        this.yOffset        = yOffset;
+        this.xOffset        = xOffset;                //
+        this.yOffset        = yOffset;                //
         this.colTile        = colTile;                //Columna de inicio
         this.filTile        = filTile;                //Fila de inicio
         this.animSpeed      = animSpeed;              //Velocidad de cambio de frame
