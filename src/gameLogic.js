@@ -40,6 +40,12 @@ function gamePlay()
     playerMovement();
     //Collision.js
     calculateCollisionWithBorders();
+    prueba();
+
+    if (action.pause === true)
+    {
+        gameState = State.GAME_STOP;
+    }
 }
 
 function gameStop()
@@ -63,31 +69,43 @@ function playerMovement()
 {
     if (action.moveLeft === true)
     {
-        sprites[0].xPos -= 3;
-        sprites[0].direction = Direction.LEFT;
-        sprites[0].colTile = 1;
-        sprites[0].filTile = 15;
-        sprites[0].speed = 5;
+        sprites[407].xPos -= 3;
+        sprites[407].direction = Direction.LEFT;
+        sprites[407].colTile = 1;
+        sprites[407].filTile = 15;
+        sprites[407].speed = 5;
     }
     else if (action.moveRight === true)
     {
-        sprites[0].xPos += 3;
-        sprites[0].direction = Direction.RIGHT;
-        sprites[0].colTile = 1;
-        sprites[0].filTile = 14;
+        sprites[407].xPos += 3;
+        sprites[407].direction = Direction.RIGHT;
+        sprites[407].colTile = 1;
+        sprites[407].filTile = 14;
     }
     else if (action.moveUp === true)
     {
-        sprites[0].yPos -= 3;
-        sprites[0].direction = Direction.UP;
-        sprites[0].colTile = 1;
-        sprites[0].filTile = 13;
+        sprites[407].yPos -= 3;
+        sprites[407].direction = Direction.UP;
+        sprites[407].colTile = 1;
+        sprites[407].filTile = 13;
     }
     else if (action.moveDown === true)
     {
-        sprites[0].yPos += 3;
-        sprites[0].direction = Direction.DOWN;
-        sprites[0].colTile = 1;
-        sprites[0].filTile = 12;
+        sprites[407].yPos += 3;
+        sprites[407].direction = Direction.DOWN;
+        sprites[407].colTile = 1;
+        sprites[407].filTile = 12;
     }
+    
+
+}
+
+function prueba()
+{
+    let fila; let columna;
+    if (sprites[407].xPos % 40 == 0 && sprites[407].yPos % 40 == 0)
+    {
+        columna = sprites[407].xPos / 40;
+        fila = sprites[407].yPos / 40;
+    }      
 }

@@ -98,6 +98,8 @@ function loadHandler()
 
 function initSprites()
 {
+    renderMapPuntos();
+
     const Player = new Sprite(
         Type.id = Type.PLAYER,             //Tipo de Sprite
         760,                   //Posición inicial en X
@@ -117,8 +119,8 @@ function initSprites()
 
     const Enemy1 = new Sprite(
         Type.id = Type.ENEMY,             //Tipo de Sprite
-        605,                   //Posición inicial en X
-        405,                  //Posición inicial en Y
+        602,                   //Posición inicial en X
+        400,                  //Posición inicial en Y
         50,
         SPRITE_SIZE,                     //Tamaño total del sprite en X
         SPRITE_SIZE,                     //Tamaño total del sprite en Y 
@@ -134,8 +136,8 @@ function initSprites()
 
     const Enemy2 = new Sprite(
         Type.id = Type.ENEMY,             //Tipo de Sprite
-        725,                   //Posición inicial en X
-        405,                   //Posición inicial en Y
+        720,                   //Posición inicial en X
+        400,                   //Posición inicial en Y
         50,
         SPRITE_SIZE,                     //Tamaño total del sprite en X
         SPRITE_SIZE,                     //Tamaño total del sprite en Y 
@@ -151,8 +153,8 @@ function initSprites()
 
     const Enemy3 = new Sprite(
         Type.id = Type.ENEMY,             //Tipo de Sprite
-        605,                   //Posición inicial en X
-        525,                   //Posición inicial en Y
+        602,                   //Posición inicial en X
+        519,                   //Posición inicial en Y
         50,
         SPRITE_SIZE,                     //Tamaño total del sprite en X
         SPRITE_SIZE,                     //Tamaño total del sprite en Y 
@@ -168,8 +170,8 @@ function initSprites()
 
     const Fruta1 = new Sprite(
         Type.id = Type.FRUTA,             //Tipo de Sprite
-        245,                   //Posición inicial en X
-        445,                   //Posición inicial en Y
+        240,                   //Posición inicial en X
+        440,                   //Posición inicial en Y
         50,
         SPRITE_SIZE,                     //Tamaño total del sprite en X
         SPRITE_SIZE,                     //Tamaño total del sprite en Y 
@@ -185,8 +187,8 @@ function initSprites()
 
     const Fruta2 = new Sprite(
         Type.id = Type.FRUTA,             //Tipo de Sprite
-        1165,                   //Posición inicial en X
-        250,                   //Posición inicial en Y
+        1162,                   //Posición inicial en X
+        242,                   //Posición inicial en Y
         0,
         SPRITE_SIZE,                     //Tamaño total del sprite en X
         SPRITE_SIZE,                     //Tamaño total del sprite en Y 
@@ -200,7 +202,7 @@ function initSprites()
     );
     sprites.push(Fruta2);
 
-    renderMapPuntos();
+    
 }
 
 function renderMapPuntos()
@@ -211,7 +213,7 @@ function renderMapPuntos()
         {
            if (level1Colisions[i][j] == 6)
            {
-                if ((i == 4 && j == 19) || (i == 10 && j == 15) || (i == 10 && j == 18) || (i == 13 && j == 15) || (i == 1 && j == 13) || (i == 6 && j == 29))
+                if ((i == 4 && j == 19) || (i == 10 && j == 15) || (i == 10 && j == 18) || (i == 13 && j == 15) || (i == 11 && j == 6) || (i == 6 && j == 29))
                 {
 
                 }
