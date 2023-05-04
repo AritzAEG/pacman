@@ -111,7 +111,7 @@ function initSprites()
         6,
         1,                     //Columna de inicio
         15,
-        0,
+        40,
         0,
         Direction.INVALID,
     );

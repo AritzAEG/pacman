@@ -41,6 +41,8 @@ function gamePlay()
     //Collision.js
     calculateCollisionWithBorders();
     prueba();
+    updatePlayer();
+    updateDirection(player);
 
     if (action.pause === true)
     {
@@ -108,4 +110,107 @@ function prueba()
         columna = sprites[407].xPos / 40;
         fila = sprites[407].yPos / 40;
     }      
+}
+
+//Función que actualiza el personaje
+function updatePlayer()
+{
+    const player = sprites[Type.PLAYER];
+    const state = player.direction;
+
+    //Aumentamos el contador de tiempo entre frames
+    player.animLagCounter++;
+
+    switch (state)
+    {
+        case Direction.UP:
+           
+            //Cambiamos de frame cuando el lag de animación alcanza animSpeed
+            if (player.animLagCounter === player.animSpeed)
+            {
+                player.frameCounter++;
+                player.animLagCounter = 0;
+            }
+           
+            if (player.frameCounter === player.numberOfFrames)
+            {
+                //Si hemos llegado al máximo de frames reiniciamos el contador (animación cíclica)
+                player.frameCounter = 0;
+                //Aquí pasaríamos al estado OFF tocaría eliminar vidas, etc...
+            }
+                         
+            break;
+
+            case Direction.DOWN:
+           
+            //Cambiamos de frame cuando el lag de animación alcanza animSpeed
+            if (player.animLagCounter === player.animSpeed)
+            {
+                player.frameCounter++;
+                player.animLagCounter = 0;
+            }
+           
+            if (player.frameCounter === player.numberOfFrames)
+            {
+                //Si hemos llegado al máximo de frames reiniciamos el contador (animación cíclica)
+                player.frameCounter = 0;
+                //Aquí pasaríamos al estado OFF tocaría eliminar vidas, etc...
+            }
+                         
+            break;
+
+            case Direction.RIGHT:
+           
+            //Cambiamos de frame cuando el lag de animación alcanza animSpeed
+            if (player.animLagCounter === player.animSpeed)
+            {
+                player.frameCounter++;
+                player.animLagCounter = 0;
+            }
+           
+            if (player.frameCounter === player.numberOfFrames)
+            {
+                //Si hemos llegado al máximo de frames reiniciamos el contador (animación cíclica)
+                player.frameCounter = 0;
+                //Aquí pasaríamos al estado OFF tocaría eliminar vidas, etc...
+            }
+                         
+            break;
+
+            case Direction.LEFT:
+           
+            //Cambiamos de frame cuando el lag de animación alcanza animSpeed
+            if (player.animLagCounter === player.animSpeed)
+            {
+                player.frameCounter++;
+                player.animLagCounter = 0;
+            }
+           
+            if (player.frameCounter === player.numberOfFrames)
+            {
+                //Si hemos llegado al máximo de frames reiniciamos el contador (animación cíclica)
+                player.frameCounter = 0;
+                //Aquí pasaríamos al estado OFF tocaría eliminar vidas, etc...
+            }
+                         
+            break;
+    }
+}
+
+function updateDirection(player)
+{
+    //Incrementamos el tiempo para cambio de dirección según el tiempo transcurrido
+    player.timeChange += lag;
+
+    if (player.timeChange > player.minTimeChange)
+    {
+        //Reseteamos el contador
+        player.timeChange = 0;
+
+        //Actualizamos el tiempo de cambio de dirección aleatoriamente, entre 1 y 6 segundos (números enteros)
+        player.minTimeChange = // A rellenar
+
+        selectRandomDirection(player); //Nueva dirección aleatoria
+       
+    }
 }
