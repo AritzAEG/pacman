@@ -28,11 +28,12 @@ function init()
     window.addEventListener("keyup",   keyupHandler,   false);
 
     //Inicializamos los sprites
-    initSprites();
-    loadMap();
-    loadSprites();
     loadImagenCarga();
+    loadMap();
     loadVidas();
+    loadSprites();
+    initPuntos();
+    initSprites();
 
     // Start the first frame request
     window.requestAnimationFrame(gameLoop);
@@ -98,8 +99,6 @@ function loadHandler()
 
 function initSprites()
 {
-    renderMapPuntos();
-
     const Player = new Sprite(
         Type.id = Type.PLAYER,             //Tipo de Sprite
         760,                   //Posición inicial en X
@@ -205,8 +204,8 @@ function initSprites()
     
 }
 
-function renderMapPuntos()
-{   
+function initPuntos()
+{
     for (i = 0; i < 21; ++i)
     {
         for (j = 0; j < 36; j++)
@@ -234,7 +233,7 @@ function renderMapPuntos()
                         0,
                         Direction.INVALID,
                     );
-                    sprites.push(punto)
+                    puntos.push(punto)
                 }
            }
         }

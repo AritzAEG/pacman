@@ -39,6 +39,7 @@ function gamestart()
 
 function gameplay()
 {
+
     if (vidas == 3)
     {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -55,6 +56,7 @@ function gameplay()
         ctx.font = "30px Emulogic";
         ctx.fillText("MAX SCORE:", 1100, 870)
         renderMap();
+        drawPunto();
         drawSprites();
     }
     else if (vidas == 2)
@@ -168,5 +170,36 @@ function renderSprite(sprite)
         sprite.xSize, sprite.ySize, //The source height and width
         xPos, yPos,                 //The destination x and y position
         sprite.xSize, sprite.ySize  //The destination height and width
+    );
+}
+
+function drawPunto()
+{
+    for (let i = 0; i < puntos.length; ++i)
+    {
+        const punto = puntos[i];
+        renderPunto(punto);
+    }
+}
+
+function renderPunto(punto)
+{
+    //Calculamos la posición del tile de inicio
+    const xPosInit = punto.colTile * SPRITE_SIZE;
+    const yPosInit = punto.filTile * SPRITE_SIZE;
+
+    const xTile = xPosInit;
+    const yTile = yPosInit;
+
+    const xPos = Math.floor(punto.xPos);
+    const yPos = Math.floor(punto.yPos);
+    
+    //Dibujamos el nuevo fotograma del sprite en la posición adecuada
+    ctx.drawImage(
+        tileSet2,                    //The image file
+        xTile, yTile,               //The source x and y position
+        punto.xSize, punto.ySize, //The source height and width
+        xPos, yPos,                 //The destination x and y position
+        punto.xSize, punto.ySize  //The destination height and width
     );
 }

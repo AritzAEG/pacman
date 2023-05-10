@@ -40,9 +40,9 @@ function gamePlay()
     playerMovement();
     //Collision.js
     calculateCollisionWithBorders();
-    prueba();
-    updatePlayer();
-    updateDirection(player);
+    movimientoFantasma1();
+    movimientoFantasma2();
+    movimientoFantasma3();
 
     if (action.pause === true)
     {
@@ -71,146 +71,160 @@ function playerMovement()
 {
     if (action.moveLeft === true)
     {
-        sprites[407].xPos -= 3;
-        sprites[407].direction = Direction.LEFT;
-        sprites[407].colTile = 1;
-        sprites[407].filTile = 15;
-        sprites[407].speed = 5;
+        sprites[0].xPos -= 3;
+        sprites[0].direction = Direction.LEFT;
+        sprites[0].colTile = 1;
+        sprites[0].filTile = 15;
+        sprites[0].speed = 5;
     }
     else if (action.moveRight === true)
     {
-        sprites[407].xPos += 3;
-        sprites[407].direction = Direction.RIGHT;
-        sprites[407].colTile = 1;
-        sprites[407].filTile = 14;
+        sprites[0].xPos += 3;
+        sprites[0].direction = Direction.RIGHT;
+        sprites[0].colTile = 1;
+        sprites[0].filTile = 14;
     }
     else if (action.moveUp === true)
     {
-        sprites[407].yPos -= 3;
-        sprites[407].direction = Direction.UP;
-        sprites[407].colTile = 1;
-        sprites[407].filTile = 13;
+        sprites[0].yPos -= 3;
+        sprites[0].direction = Direction.UP;
+        sprites[0].colTile = 1;
+        sprites[0].filTile = 13;
     }
     else if (action.moveDown === true)
     {
-        sprites[407].yPos += 3;
-        sprites[407].direction = Direction.DOWN;
-        sprites[407].colTile = 1;
-        sprites[407].filTile = 12;
+        sprites[0].yPos += 3;
+        sprites[0].direction = Direction.DOWN;
+        sprites[0].colTile = 1;
+        sprites[0].filTile = 12;
     }
+}
+
+function movimientoFantasma1()
+{
+    let numero;
     
-
-}
-
-function prueba()
-{
-    let fila; let columna;
-    if (sprites[407].xPos % 40 == 0 && sprites[407].yPos % 40 == 0)
+    numero = getRandomInt(4);
+    
+    console.log(numero);
+    
+    if (numero == 0)
     {
-        columna = sprites[407].xPos / 40;
-        fila = sprites[407].yPos / 40;
-    }      
-}
-
-//Función que actualiza el personaje
-function updatePlayer()
-{
-    const player = sprites[Type.PLAYER];
-    const state = player.direction;
-
-    //Aumentamos el contador de tiempo entre frames
-    player.animLagCounter++;
-
-    switch (state)
+        //DOWN
+        sprites[1].yPos += 3
+        sprites[1].direction = Direction.UP 
+        sprites[1].colTile = 0;
+        sprites[1].filTile = 0;
+    }
+    else if (numero == 1)
     {
-        case Direction.UP:
-           
-            //Cambiamos de frame cuando el lag de animación alcanza animSpeed
-            if (player.animLagCounter === player.animSpeed)
-            {
-                player.frameCounter++;
-                player.animLagCounter = 0;
-            }
-           
-            if (player.frameCounter === player.numberOfFrames)
-            {
-                //Si hemos llegado al máximo de frames reiniciamos el contador (animación cíclica)
-                player.frameCounter = 0;
-                //Aquí pasaríamos al estado OFF tocaría eliminar vidas, etc...
-            }
-                         
-            break;
-
-            case Direction.DOWN:
-           
-            //Cambiamos de frame cuando el lag de animación alcanza animSpeed
-            if (player.animLagCounter === player.animSpeed)
-            {
-                player.frameCounter++;
-                player.animLagCounter = 0;
-            }
-           
-            if (player.frameCounter === player.numberOfFrames)
-            {
-                //Si hemos llegado al máximo de frames reiniciamos el contador (animación cíclica)
-                player.frameCounter = 0;
-                //Aquí pasaríamos al estado OFF tocaría eliminar vidas, etc...
-            }
-                         
-            break;
-
-            case Direction.RIGHT:
-           
-            //Cambiamos de frame cuando el lag de animación alcanza animSpeed
-            if (player.animLagCounter === player.animSpeed)
-            {
-                player.frameCounter++;
-                player.animLagCounter = 0;
-            }
-           
-            if (player.frameCounter === player.numberOfFrames)
-            {
-                //Si hemos llegado al máximo de frames reiniciamos el contador (animación cíclica)
-                player.frameCounter = 0;
-                //Aquí pasaríamos al estado OFF tocaría eliminar vidas, etc...
-            }
-                         
-            break;
-
-            case Direction.LEFT:
-           
-            //Cambiamos de frame cuando el lag de animación alcanza animSpeed
-            if (player.animLagCounter === player.animSpeed)
-            {
-                player.frameCounter++;
-                player.animLagCounter = 0;
-            }
-           
-            if (player.frameCounter === player.numberOfFrames)
-            {
-                //Si hemos llegado al máximo de frames reiniciamos el contador (animación cíclica)
-                player.frameCounter = 0;
-                //Aquí pasaríamos al estado OFF tocaría eliminar vidas, etc...
-            }
-                         
-            break;
+        //UP
+        sprites[1].yPos -= 3
+        sprites[1].direction = Direction.DOWN 
+        sprites[1].colTile = 0;
+        sprites[1].filTile = 1;
+        
+    }
+    else if (numero == 2)
+    {
+        //RIGHT
+        sprites[1].xPos += 3
+        sprites[1].direction = Direction.UP 
+        sprites[1].colTile = 0;
+        sprites[1].filTile = 2;
+    }
+    else if (numero == 3)
+    {
+        //LEFT
+        sprites[1].xPos -= 3
+        sprites[1].direction = Direction.UP 
+        sprites[1].colTile = 0;
+        sprites[1].filTile = 3;
     }
 }
 
-function updateDirection(player)
+function movimientoFantasma2()
 {
-    //Incrementamos el tiempo para cambio de dirección según el tiempo transcurrido
-    player.timeChange += lag;
-
-    if (player.timeChange > player.minTimeChange)
+    let numero;
+    
+    numero = getRandomInt(4);
+    
+    console.log(numero);
+    
+    if (numero == 0)
     {
-        //Reseteamos el contador
-        player.timeChange = 0;
+        //DOWN
+        sprites[2].yPos += 3
+        sprites[2].direction = Direction.UP 
+        sprites[2].colTile = 0;
+        sprites[2].filTile = 4;
+    }
+    else if (numero == 1)
+    {
+        //UP
+        sprites[2].yPos -= 3
+        sprites[2].direction = Direction.DOWN 
+        sprites[2].colTile = 0;
+        sprites[2].filTile = 5;
+        
+    }
+    else if (numero == 2)
+    {
+        //RIGHT
+        sprites[2].xPos += 3
+        sprites[2].direction = Direction.UP 
+        sprites[2].colTile = 0;
+        sprites[2].filTile = 6;
+    }
+    else if (numero == 3)
+    {
+        //LEFT
+        sprites[2].xPos -= 3
+        sprites[2].direction = Direction.UP 
+        sprites[2].colTile = 0;
+        sprites[2].filTile = 7;
+    }
+}
 
-        //Actualizamos el tiempo de cambio de dirección aleatoriamente, entre 1 y 6 segundos (números enteros)
-        player.minTimeChange = // A rellenar
-
-        selectRandomDirection(player); //Nueva dirección aleatoria
-       
+function movimientoFantasma3()
+{
+    let numero;
+    
+    numero = getRandomInt(4);
+    
+    console.log(numero);
+    
+    if (numero == 0)
+    {
+        //DOWN
+        sprites[3].yPos += 3
+        sprites[3].direction = Direction.UP 
+        sprites[3].colTile = 0;
+        sprites[3].filTile = 8;
+    }
+    else if (numero == 1)
+    {
+        //UP
+        sprites[3].yPos -= 3
+        sprites[3].direction = Direction.DOWN 
+        sprites[3].colTile = 0;
+        sprites[3].filTile = 9;
+        
+    }
+    else if (numero == 2)
+    {
+        //RIGHT
+        sprites[3].xPos += 3
+        sprites[3].direction = Direction.UP 
+        sprites[3].colTile = 0;
+        sprites[3].filTile = 10;
+    }
+    else if (numero == 3)
+    {
+        //LEFT
+        sprites[3].xPos -= 3
+        sprites[3].direction = Direction.UP 
+        sprites[3].colTile = 0;
+        sprites[3].filTile = 11;
     }
 }

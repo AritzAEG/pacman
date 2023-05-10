@@ -46,5 +46,5 @@ let yPos = 60;
 
 //OBTENER NUMERO ALEATORIO
 function getRandomInt(max) {
-  return ;
+  return Math.floor(Math.random() * max);
 }

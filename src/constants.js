@@ -30,11 +30,11 @@ const Type = {
 
 //Estados de animación de sprites
 const Direction = {
-    UP: 0,
-    LEFT: 1,
-    DOWN: 2,
-    RIGHT: 3,
-    INVALID: 4,
+    DOWN: 0,
+    UP: 1,
+    RIGHT: 2,
+    LEFT: 3,
+    INVALID: -1,
 }
 
 //Keyboard Events
