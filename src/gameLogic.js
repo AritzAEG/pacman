@@ -13,8 +13,6 @@ function update()
 
         case State.GAME_PLAY:
             gamePlay();
-            
-            collision();
             break;
 
         case State.GAME_STOP:
@@ -43,6 +41,9 @@ function gamePlay()
     movimientoFantasma1();
     movimientoFantasma2();
     movimientoFantasma3();
+    puntosCambiar();
+    collisionWithMap();
+    prueba();
 
     if (action.pause === true)
     {
@@ -63,6 +64,18 @@ function gameOver()
     if (action.jump === true)
     {
         gameState = State.GAME_START;
+    }
+}
+
+function prueba()
+{
+    for (let i = 0; i < puntos.length; i++)
+    {
+        if (puntos[i].isCollisionWithPlayer == true)
+        {
+            puntos[i].colTile = 0;
+            puntos[i].filTile = 16;
+        }
     }
 }
 
@@ -106,8 +119,6 @@ function movimientoFantasma1()
     
     numero = getRandomInt(4);
     
-    console.log(numero);
-    
     if (numero == 0)
     {
         //DOWN
@@ -149,8 +160,6 @@ function movimientoFantasma2()
     
     numero = getRandomInt(4);
     
-    console.log(numero);
-    
     if (numero == 0)
     {
         //DOWN
@@ -191,9 +200,7 @@ function movimientoFantasma3()
     let numero;
     
     numero = getRandomInt(4);
-    
-    console.log(numero);
-    
+ 
     if (numero == 0)
     {
         //DOWN

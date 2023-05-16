@@ -113,6 +113,7 @@ function initSprites()
         40,
         0,
         Direction.INVALID,
+        false,
     );
     sprites.push(Player);
 
@@ -130,6 +131,7 @@ function initSprites()
         0,
         0,
         Direction.INVALID,
+        false,
     );
     sprites.push(Enemy1);
 
@@ -147,6 +149,7 @@ function initSprites()
         0,
         0,
         Direction.INVALID,
+        false,
     );
     sprites.push(Enemy2);
 
@@ -164,6 +167,7 @@ function initSprites()
         0,
         0,
         Direction.INVALID,
+        false,
     );
     sprites.push(Enemy3);
 
@@ -181,6 +185,7 @@ function initSprites()
         0,
         0,
         Direction.INVALID,
+        false,
     );
     sprites.push(Fruta1);
 
@@ -198,6 +203,7 @@ function initSprites()
         0,
         0,
         Direction.INVALID,
+        false,
     );
     sprites.push(Fruta2);
 
@@ -231,7 +237,8 @@ function initPuntos()
                         16,
                         0,
                         0,
-                        Direction.INVALID,
+                        Direction.ON,
+                        false,
                     );
                     puntos.push(punto)
                 }

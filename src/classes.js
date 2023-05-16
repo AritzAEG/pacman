@@ -1,6 +1,6 @@
 class Sprite
 {
-    constructor(id, xPos, yPos, speed, xSize, ySize, xOffset, yOffset, colTile, filTile, animSpeed, animLagCounter, direction)
+    constructor(id, xPos, yPos, speed, xSize, ySize, xOffset, yOffset, colTile, filTile, animSpeed, animLagCounter, direction, isCollisionWithPlayer)
     {
         this.id             = id;                     //Tipo de Sprite
         this.xPos           = xPos;                   //Posición inicial en X
@@ -15,6 +15,7 @@ class Sprite
         this.animSpeed      = animSpeed;              //Velocidad de cambio de frame
         this.animLagCounter = animLagCounter;         //Velocidad de cambio de frame
         this.direction      = direction;              //Direccion del sprite
+        this.isCollisionWithPlayer = isCollisionWithPlayer
     }  
 }
 

@@ -35,6 +35,8 @@ const Direction = {
     RIGHT: 2,
     LEFT: 3,
     INVALID: -1,
+    OFF: 4,
+    ON: 5,
 }
 
 //Keyboard Events
