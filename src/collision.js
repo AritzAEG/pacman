@@ -1,26 +1,44 @@
-//Cálculo de colisión con los bordes de la pantalla
-function calculateCollisionWithBorders()
+function calculateCollision()
 {
-    const player = sprites[Type.PLAYER];
+    //Colisión de los sprites con los bordes de la pantalla
+    for (let i = 0; i < sprites.length; ++i)
+    {
+        const sprite = sprites[i];
+        calculateCollisionWithBorders(sprite);       
+    }
 
-    //Hemos llegado a la esquina izquierda
-    if (player.xPos < 0)
-        player.xPos = 0;
-
-    //Hemos llegado a la esquina derecha
-    else if (player.xPos > canvas.width - player.xSize)
-        player.xPos = canvas.width - player.xSize;
-
-    //Hemos llegado a la esquina inferior
-    else if (player.yPos > canvas.height - player.ySize)
-        player.yPos = canvas.height - player.ySize
-
-    //Hemos llegado a la esquina superior
-    else if (player.yPos < 0)
-        player.yPos = 0;
+    //Calculamos colision del player con cada uno de los sprites
+    for (let i = 0; i <= puntos.length; ++i)
+    {
+        const player = sprites[0];      
+        playerPoints(player);
+    }
+    
 }
 
-function puntosCambiar()
+
+//Cálculo de colisión con los bordes de la pantalla
+function calculateCollisionWithBorders(sprite)
+{
+
+    //Hemos llegado a la esquina izquierda
+    if (sprite.xPos < 0)
+        sprite.xPos = 0;
+
+    //Hemos llegado a la esquina derecha
+    else if (sprite.xPos > canvas.width - sprite.xSize)
+        sprite.xPos = canvas.width - sprite.xSize;
+
+    //Hemos llegado a la esquina inferior
+    else if (sprite.yPos > canvas.height - sprite.ySize)
+        sprite.yPos = canvas.height - sprite.ySize
+
+    //Hemos llegado a la esquina superior
+    else if (sprite.yPos < 0)
+        sprite.yPos = 0;
+}
+
+function playerPoints(player)
 {
     for (let i = 0; i < puntos.length; i++)
     {
@@ -30,13 +48,28 @@ function puntosCambiar()
     for (let i = 0; i < puntos.length; i++)
     {
 
-        if (puntos[i].xPos >= sprites[0].xPos && puntos[i].yPos <= sprites[0].yPos && puntos[i].xPos + 40 >= sprites[0].xPos + 40 &&  sprites[0].yPos + 40 <= puntos[i].yPos + 40)
-        {            
-            puntos[i].isCollisionWithPlayer = true;
-            console.log(puntos[i].xPos, puntos[i].yPos, puntos[i].xPos + 40, puntos[i].yPos + 40)
-            console.log(sprites[0].xPos, sprites[0].yPos, sprites[0].xPos + 40, sprites[0].yPos + 40)
+        //Datos del player
+        const x1 = player.xPos + player.xOffsetCol;
+        const y1 = player.yPos + player.yOffsetCol;
+        const w1 = player.xSizeCol;
+        const h1 = player.ySizeCol;
+
+        //Datos del otro sprite
+        const x2 = puntos[i].xPos + puntos[i].xOffsetCol;
+        const y2 = puntos[i].yPos + puntos[i].yOffsetCol;
+        const w2 = puntos[i].xSizeCol;
+        const h2 = puntos[i].ySizeCol;
+   
+        const isCollision = rectIntersect(x1, y1, w1, h1, x2, y2, w2, h2)
+
+        if (isCollision) 
+        {
+            puntos[i].isCollisionWithPlayer = true;       
         }
+
     }
+
+    
 }
 
 function collisionWithMap()
@@ -54,4 +87,22 @@ function collisionWithMap()
             }
         }
     }
+}
+
+function rectIntersect(x1, y1, w1, h1, x2, y2, w2, h2) 
+{
+    let collisionX;
+    let collisionY;
+
+    if (x2 > x1)
+        collisionX = (x2 - x1) < w1;
+    else
+        collisionX = (x1 - x2) < w2;
+
+    if (y2 > y1)
+        collisionY = (y2 - y1) < h1;
+    else
+        collisionY = (y1 - y2) < h2;
+  
+    return collisionX && collisionY;
 }

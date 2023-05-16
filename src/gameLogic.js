@@ -35,15 +35,9 @@ function gameStart()
 
 function gamePlay()
 {
-    playerMovement();
-    //Collision.js
-    calculateCollisionWithBorders();
-    movimientoFantasma1();
-    movimientoFantasma2();
-    movimientoFantasma3();
-    puntosCambiar();
-    collisionWithMap();
-    prueba();
+    movimientoSprites();
+    calculateCollision();
+    vueltaPuntos();
 
     if (action.pause === true)
     {
@@ -67,7 +61,7 @@ function gameOver()
     }
 }
 
-function prueba()
+function vueltaPuntos()
 {
     for (let i = 0; i < puntos.length; i++)
     {
@@ -79,159 +73,154 @@ function prueba()
     }
 }
 
-
-function playerMovement()
+function movimientoSprites()
 {
+    const player = sprites[Type.PLAYER];
+
     if (action.moveLeft === true)
     {
-        sprites[0].xPos -= 3;
-        sprites[0].direction = Direction.LEFT;
-        sprites[0].colTile = 1;
-        sprites[0].filTile = 15;
-        sprites[0].speed = 5;
+        player.xPos -= 3;
+        player.direction = Direction.LEFT;
+        player.colTile = 1;
+        player.filTile = 15;
+        player.speed = 5;
     }
     else if (action.moveRight === true)
     {
-        sprites[0].xPos += 3;
-        sprites[0].direction = Direction.RIGHT;
-        sprites[0].colTile = 1;
-        sprites[0].filTile = 14;
+        player.xPos += 3;
+        player.direction = Direction.RIGHT;
+        player.colTile = 1;
+        player.filTile = 14;
     }
     else if (action.moveUp === true)
     {
-        sprites[0].yPos -= 3;
-        sprites[0].direction = Direction.UP;
-        sprites[0].colTile = 1;
-        sprites[0].filTile = 13;
+        player.yPos -= 3;
+        player.direction = Direction.UP;
+        player.colTile = 1;
+        player.filTile = 13;
     }
     else if (action.moveDown === true)
     {
-        sprites[0].yPos += 3;
-        sprites[0].direction = Direction.DOWN;
-        sprites[0].colTile = 1;
-        sprites[0].filTile = 12;
+        player.yPos += 3;
+        player.direction = Direction.DOWN;
+        player.colTile = 1;
+        player.filTile = 12;
     }
-}
 
-function movimientoFantasma1()
-{
     let numero;
+    const fantasma1 = sprites[1];
     
     numero = getRandomInt(4);
     
     if (numero == 0)
     {
         //DOWN
-        sprites[1].yPos += 3
-        sprites[1].direction = Direction.UP 
-        sprites[1].colTile = 0;
-        sprites[1].filTile = 0;
+        fantasma1.yPos += 3
+        fantasma1.direction = Direction.UP 
+        fantasma1.colTile = 0;
+        fantasma1.filTile = 0;
     }
     else if (numero == 1)
     {
         //UP
-        sprites[1].yPos -= 3
-        sprites[1].direction = Direction.DOWN 
-        sprites[1].colTile = 0;
-        sprites[1].filTile = 1;
+        fantasma1.yPos -= 3
+        fantasma1.direction = Direction.DOWN 
+        fantasma1.colTile = 0;
+        fantasma1.filTile = 1;
         
     }
     else if (numero == 2)
     {
         //RIGHT
-        sprites[1].xPos += 3
-        sprites[1].direction = Direction.UP 
-        sprites[1].colTile = 0;
-        sprites[1].filTile = 2;
+        fantasma1.xPos += 3
+        fantasma1.direction = Direction.UP 
+        fantasma1.colTile = 0;
+        fantasma1.filTile = 2;
     }
     else if (numero == 3)
     {
         //LEFT
-        sprites[1].xPos -= 3
-        sprites[1].direction = Direction.UP 
-        sprites[1].colTile = 0;
-        sprites[1].filTile = 3;
+        fantasma1.xPos -= 3
+        fantasma1.direction = Direction.UP 
+        fantasma1.colTile = 0;
+        fantasma1.filTile = 3;
     }
-}
 
-function movimientoFantasma2()
-{
-    let numero;
+    let numero2;
+    const fantasma2 = sprites[2];
     
-    numero = getRandomInt(4);
+    numero2 = getRandomInt(4);
     
-    if (numero == 0)
+    if (numero2 == 0)
     {
         //DOWN
-        sprites[2].yPos += 3
-        sprites[2].direction = Direction.UP 
-        sprites[2].colTile = 0;
-        sprites[2].filTile = 4;
+        fantasma2.yPos += 3
+        fantasma2.direction = Direction.UP 
+        fantasma2.colTile = 0;
+        fantasma2.filTile = 4;
     }
-    else if (numero == 1)
+    else if (numero2 == 1)
     {
         //UP
-        sprites[2].yPos -= 3
-        sprites[2].direction = Direction.DOWN 
-        sprites[2].colTile = 0;
-        sprites[2].filTile = 5;
+        fantasma2.yPos -= 3
+        fantasma2.direction = Direction.DOWN 
+        fantasma2.colTile = 0;
+        fantasma2.filTile = 5;
         
     }
-    else if (numero == 2)
+    else if (numero2 == 2)
     {
         //RIGHT
-        sprites[2].xPos += 3
-        sprites[2].direction = Direction.UP 
-        sprites[2].colTile = 0;
-        sprites[2].filTile = 6;
+        fantasma2.xPos += 3
+        fantasma2.direction = Direction.UP 
+        fantasma2.colTile = 0;
+        fantasma2.filTile = 6;
     }
-    else if (numero == 3)
+    else if (numero2 == 3)
     {
         //LEFT
-        sprites[2].xPos -= 3
-        sprites[2].direction = Direction.UP 
-        sprites[2].colTile = 0;
-        sprites[2].filTile = 7;
+        fantasma2.xPos -= 3
+        fantasma2.direction = Direction.UP 
+        fantasma2.colTile = 0;
+        fantasma2.filTile = 7;
     }
-}
 
-function movimientoFantasma3()
-{
-    let numero;
+    let numero3;
+    const fantasma3 = sprites[3];
     
-    numero = getRandomInt(4);
+    numero3 = getRandomInt(4);
  
-    if (numero == 0)
+    if (numero3 == 0)
     {
         //DOWN
-        sprites[3].yPos += 3
-        sprites[3].direction = Direction.UP 
-        sprites[3].colTile = 0;
-        sprites[3].filTile = 8;
+        fantasma3.yPos += 3
+        fantasma3.direction = Direction.UP 
+        fantasma3.colTile = 0;
+        fantasma3.filTile = 8;
     }
-    else if (numero == 1)
+    else if (numero3 == 1)
     {
         //UP
-        sprites[3].yPos -= 3
-        sprites[3].direction = Direction.DOWN 
-        sprites[3].colTile = 0;
-        sprites[3].filTile = 9;
+        fantasma3.yPos -= 3
+        fantasma3.direction = Direction.DOWN 
+        fantasma3.colTile = 0;
+        fantasma3.filTile = 9;
         
     }
-    else if (numero == 2)
+    else if (numero3 == 2)
     {
         //RIGHT
-        sprites[3].xPos += 3
-        sprites[3].direction = Direction.UP 
-        sprites[3].colTile = 0;
-        sprites[3].filTile = 10;
+        fantasma3.xPos += 3
+        fantasma3.direction = Direction.UP 
+        fantasma3.colTile = 0;
+        fantasma3.filTile = 10;
     }
-    else if (numero == 3)
+    else if (numero3 == 3)
     {
         //LEFT
-        sprites[3].xPos -= 3
-        sprites[3].direction = Direction.UP 
-        sprites[3].colTile = 0;
-        sprites[3].filTile = 11;
+        fantasma3.xPos -= 3
+        fantasma3.direction = Direction.UP 
+        fantasma3.colTile = 0;
+        fantasma3.filTile = 11;
     }
 }
