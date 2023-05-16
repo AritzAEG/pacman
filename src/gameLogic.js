@@ -37,7 +37,9 @@ function gamePlay()
 {
     movimientoSprites();
     calculateCollision();
+    vueltaFruta();
     vueltaPuntos();
+    vidasDown();
 
     if (action.pause === true)
     {
@@ -69,6 +71,29 @@ function vueltaPuntos()
         {
             puntos[i].colTile = 0;
             puntos[i].filTile = 16;
+        }
+    }
+}
+
+function vidasDown()
+{
+    for (let i = 1; i <= 3; i++)
+    {
+        if (sprites[i].isCollisionWithPlayer == true)
+        {
+            vidas = vidas - 1;
+        }
+    }
+}
+
+function vueltaFruta()
+{
+    for (let i = 4; i <= 5; i++)
+    {
+        if (sprites[i].isCollisionWithPlayer == true)
+        {
+            sprites[i].colTile = 0;
+            sprites[i].filTile = 16;
         }
     }
 }

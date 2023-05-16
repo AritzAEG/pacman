@@ -61,7 +61,6 @@ function gameplay()
     }
     else if (vidas == 2)
     {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "white";
         ctx.font = "30px Emulogic";
         ctx.fillText("VIDAS: ", 10, 870)
@@ -76,7 +75,6 @@ function gameplay()
     } 
     else if (vidas == 1)
     {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "white";
         ctx.font = "30px Emulogic";
         ctx.fillText("VIDAS: ", 10, 870)
