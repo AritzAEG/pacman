@@ -35,6 +35,7 @@ function gameStart()
 
 function gamePlay()
 {
+    console.log(sounds[0]);
     movimientoSprites();
     calculateCollision();
     vueltaFruta();

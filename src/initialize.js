@@ -39,6 +39,27 @@ function init()
     window.requestAnimationFrame(gameLoop);
 }
 
+function loadMusic()
+{
+    let pickPoint = document.querySelector("#pickPoint");
+    pickPoint.addEventListener("canplaythrough", loadHandler, false);
+    pickPoint.load();
+    sounds.push(pickPoint);
+    assetsToLoad.push(pickPoint);
+}
+
+
+function updateMusic()
+{
+    var buffer = 0.28;
+    const music = sounds[Sound.GAME_MUSIC];
+    if(music.currentTime > music.duration - buffer)
+    {
+        music.currentTime = 0;
+        music.play();
+    }
+}
+
 function loadMap() 
 {
     let tileSet;
@@ -88,6 +109,11 @@ function loadHandler()
             tileSets[i].removeEventListener("load", loadHandler, false);
         }
 
+        for (i = 0; i < sounds.length; ++i)
+        {
+            sounds[i].removeEventListener("canplaythrough", loadHandler, false);
+        }
+
         console.log("Assets finished loading");
         
         //Start the game
@@ -114,10 +140,10 @@ function initSprites()
         0,
         Direction.INVALID,
         false,
-        30,
-        30,
-        10,
-        10,
+        8,
+        8,
+        0,
+        0,
     );
     sprites.push(Player);
 
@@ -136,8 +162,8 @@ function initSprites()
         0,
         Direction.INVALID,
         false,
-        40,
-        40,
+        8,
+        8,
         0,
         0,
     );
@@ -158,8 +184,8 @@ function initSprites()
         0,
         Direction.INVALID,
         false,
-        40,
-        40,
+        8,
+        8,
         0,
         0,
     );
@@ -180,8 +206,8 @@ function initSprites()
         0,
         Direction.INVALID,
         false,
-        40,
-        40,
+        8,
+        8,
         0,
         0,
     );
@@ -202,8 +228,8 @@ function initSprites()
         0,
         Direction.INVALID,
         false,
-        40,
-        40,
+        8,
+        8,
         0,
         0,
     );
@@ -224,8 +250,8 @@ function initSprites()
         0,
         Direction.INVALID,
         false,
-        40,
-        40,
+        8,
+        8,
         0,
         0,
     );

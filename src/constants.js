@@ -90,6 +90,13 @@ const Block = {
     pipeVertical1: 17,
 }
 
+const Sound = {
+    GAME_WAIT: 0,
+    GAME_MUSIC: 1,
+    GAME_OVER: 2,
+    PICK_POINT: 3,    
+}
+
 //Anchura de los sprites
 const SPRITE_SIZE = 40;
 

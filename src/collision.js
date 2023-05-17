@@ -27,7 +27,6 @@ function calculateCollision()
     }
 
     calculateCollisionWithMap();
-    
 }
 
 
@@ -139,6 +138,7 @@ function colisionWithGhost(player)
 
         if (isCollision) 
         {
+            console.log("YUJU")
             sprites[i].isCollisionWithPlayer = true;       
         }
     }
@@ -161,13 +161,131 @@ function collisionWithMap()
     }
 }
 
+function isCollisionWithTile(map, xPos, Ypos)
+{
+    let collision;
+    const id = getMapTileId(map, xPos, Ypos);
+
+    if (id == 1)
+    {
+        collision = true;
+        console.log(level1Colisions[i][j])
+    }   
+    else
+    {
+        collision = false;
+    }    
+
+    return collision;
+}
+
+function getMapTileId(map, xPos, Ypos)
+{
+    const fil = Math.floor(yPos / BRICK_SIZE);
+    const col = Math.floor(xPos / BRICK_SIZE);
+
+    return map[fil][col]
+}
+
 function calculateCollisionWithMap()
 {
     const player = sprites[Type.PLAYER]
 
+
     switch(player.direction)
     {
-        case Direction.RIGHT
+        case Direction.RIGHT:
+
+        //Primera colision en (xPos + xSize - 1, yPos)
+        const xPos = player.xPos + player.xOffsetCol + player.xSizeCol - 1;
+        let yPos = player.yPos + player.yOffsetCol;
+        const isCollision1 = isCollisionWithTile(level1Colisions, xPos, yPos);
+
+        yPos = player.yPos + player.yOffsetCol + BRICK_SIZE;
+        const isCollision2 = isCollisionWithTile(level1Colisions, xPos, yPos);
+
+        yPos = player.yPos + player.yOffsetCol + player.ySizeCol - 1;
+        const isCollision3 = isCollisionWithTile(level1Colisions, xPos, yPos);
+
+        const isCollision = isCollision1 || isCollision2 || isCollision3;
+
+        if (isCollision)
+        {
+            const xOverlap = Math.floor(xPos) % BRICK_SIZE + 1
+            player.xPos -= xOverlap;
+        }
+
+        break;
+        /*
+        case Direction.LEFT:
+
+        //Primera colision en (xPos + xSize - 1, yPos)
+        const xPos2 = player.xPos - player.xOffsetCol - player.xSizeCol - 1;
+        let yPos2 = player.yPos - player.yOffsetCol;
+        const isCollision4 = isCollisionWithTile(level1Colisions, xPos2, yPos2);
+
+        yPos2 = player.yPos + player.yOffsetCol + BRICK_SIZE;
+        const isCollision5 = isCollisionWithTile(level1Colisions, xPos2, yPos2);
+
+        yPos2 = player.yPos + player.yOffsetCol + player.ySizeCol - 1;
+        const isCollision6 = isCollisionWithTile(level1Colisions, xPos2, yPos2);
+
+        const isCollision7 = isCollision4 || isCollision5 || isCollision6;
+
+        if (isCollision7)
+        {
+            const xOverlap2 = Math.floor(xPos2) % BRICK_SIZE + 1
+            player.xPos -= xOverlap2;
+        }
+
+        break;
+
+        case Direction.UP:
+
+        //Primera colision en (xPos + xSize - 1, yPos)
+        const xPos3 = player.xPos + player.xOffsetCol + player.xSizeCol - 1;
+        let yPos3 = player.yPos + player.yOffsetCol;
+        const isCollision8 = isCollisionWithTile(level1Colisions, xPos3, yPos3);
+
+        yPos3 = player.yPos + player.yOffsetCol + BRICK_SIZE;
+        const isCollision9 = isCollisionWithTile(level1Colisions, xPos3, yPos3);
+
+        yPos3 = player.yPos + player.yOffsetCol + player.ySizeCol - 1;
+        const isCollision10 = isCollisionWithTile(level1Colisions, xPos3, yPos3);
+
+        const isCollision11 = isCollision8 || isCollision9 || isCollision10;
+
+        if (isCollision11)
+        {
+            xOverlap3 = Math.floor(xPos3) % BRICK_SIZE + 1
+            player.xPos -= xOverlap3;
+        }
+
+        break;
+
+        case Direction.DOWN:
+
+        //Primera colision en (xPos + xSize - 1, yPos)
+        const xPos4 = player.xPos + player.xOffsetCol + player.xSizeCol - 1;
+        yPos4 = player.yPos + player.yOffsetCol;
+        const isCollision12 = isCollisionWithTile(level1Colisions, xPos4, yPos4);
+
+        yPos4 = player.yPos + player.yOffsetCol + BRICK_SIZE;
+        const isCollision13 = isCollisionWithTile(level1Colisions, xPos4, yPos4);
+
+        yPos4 = player.yPos + player.yOffsetCol + player.ySizeCol - 1;
+        const isCollision14 = isCollisionWithTile(level1Colisions, xPos4, yPos4);
+
+        const isCollision15 = isCollision12 || isCollision13 || isCollision14;
+
+        if (isCollision15)
+        {
+            const xOverlap4 = Math.floor(xPos4) % BRICK_SIZE + 1
+            player.xPos -= xOverlap4;
+        }
+
+        break;
+        */
     }
 }
 

@@ -31,6 +31,7 @@ let tileSets = [];
 //Array con datos de los sprites
 let sprites = [];
 let puntos = [];
+let sounds = [];
 
 //Variables para gestionar la carga de activos
 let assetsToLoad = [];
