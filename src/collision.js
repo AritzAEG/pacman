@@ -169,7 +169,6 @@ function isCollisionWithTile(map, xPos, Ypos)
     if (id == 1)
     {
         collision = true;
-        console.log(level1Colisions[i][j])
     }   
     else
     {

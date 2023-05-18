@@ -133,11 +133,11 @@ function initSprites()
         SPRITE_SIZE,                     //Tamaño total del sprite en X
         SPRITE_SIZE,                     //Tamaño total del sprite en Y 
         10,
-        6,
+        6,              
         1,                     //Columna de inicio
         15,
-        40,
-        0,
+        10,                    //AnimSpeed
+        0,                     //AnimLagCounter
         Direction.INVALID,
         false,
         8,

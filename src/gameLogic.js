@@ -35,16 +35,48 @@ function gameStart()
 
 function gamePlay()
 {
-    console.log(sounds[0]);
     movimientoSprites();
     calculateCollision();
     vueltaFruta();
     vueltaPuntos();
     vidasDown();
+    updateAnimation();
 
     if (action.pause === true)
     {
         gameState = State.GAME_STOP;
+    }
+}
+
+function updateAnimation()
+{
+    const player = sprites[Type.PLAYER];
+    const state = player.direction;
+
+    player.animLagCounter++;
+
+    switch(state)
+    {
+        case Direction.RIGHT:
+            player.xPos = player.xPos + player.speed * lag / 1000;
+        break;
+    }
+
+    updateAnimationFrame(player);
+}
+
+function updateAnimationFrame(sprite)
+{
+
+    if (sprite.animLagCounter === sprite.animSpeed)
+    {
+        sprite.frameCounter++;
+        sprite.animLagCounter = 0
+    }
+
+    if (sprite.animLagCounter === sprite.numberOfFrames)
+    {
+        sprite.frameCounter = 0;
     }
 }
 
