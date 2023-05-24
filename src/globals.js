@@ -41,6 +41,7 @@ let assetsLoaded = 0;
 let vidas;
 let puntuacion;
 let numeroAleatorio;
+let tiempo;
 
 let xPos = 60;
 let yPos = 60;

@@ -51,7 +51,10 @@ function gameplay()
         ctx.drawImage(tileSet3, 200, 845)
         ctx.fillStyle = "white";
         ctx.font = "30px Emulogic";
-        ctx.fillText("SCORE: " + puntuacion, 600, 870)
+        ctx.fillText("TIME: " + tiempo, 450, 870)
+        ctx.fillStyle = "white";
+        ctx.font = "30px Emulogic";
+        ctx.fillText("SCORE: " + puntuacion, 750, 870)
         ctx.fillStyle = "white";
         ctx.font = "30px Emulogic";
         ctx.fillText("MAX SCORE:", 1100, 870)
@@ -154,7 +157,7 @@ function renderSprite(sprite)
     //Calculamos la posición del tile de inicio
     const xPosInit = sprite.colTile * SPRITE_SIZE;
     const yPosInit = sprite.filTile * SPRITE_SIZE;
-
+    
     const xTile = xPosInit;
     const yTile = yPosInit;
 

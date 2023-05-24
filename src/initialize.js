@@ -22,6 +22,7 @@ function init()
 
     vidas = 3;
     puntuacion = 0;
+    tiempo = 0;
 
     //Para los eventos del teclado
     window.addEventListener("keydown", keydownHandler, false);
@@ -140,8 +141,8 @@ function initSprites()
         0,                     //AnimLagCounter
         Direction.INVALID,
         false,
-        8,
-        8,
+        35,
+        35,
         0,
         0,
     );

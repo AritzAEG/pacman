@@ -26,7 +26,7 @@ function calculateCollision()
         colisionWithGhost(player)
     }
 
-    calculateCollisionWithMap();
+    //calculateCollisionWithMap();
 }
 
 
@@ -106,7 +106,6 @@ function colisionWithFruit(player)
 
         if (isCollision) 
         {
-            console.log(sprites[i].isCollisionWithPlayer)
             sprites[i].isCollisionWithPlayer = true;    
         }
     }
@@ -144,23 +143,6 @@ function colisionWithGhost(player)
     }
 }
 
-function collisionWithMap()
-{
-    const num_fil = level1Colisions.length;
-    const num_col = level1Colisions[0].length;
-   
-    for (i = 0; i < num_fil; ++i)
-    {
-        for (j = 0; j < num_col; ++j)
-        {
-            if (level1Colisions[i][j] == 6)
-            {
-                
-            }
-        }
-    }
-}
-
 function isCollisionWithTile(map, xPos, Ypos)
 {
     let collision;
@@ -178,7 +160,7 @@ function isCollisionWithTile(map, xPos, Ypos)
     return collision;
 }
 
-function getMapTileId(map, xPos, Ypos)
+function getMapTileId(map, xPos, yPos)
 {
     const fil = Math.floor(yPos / BRICK_SIZE);
     const col = Math.floor(xPos / BRICK_SIZE);
@@ -189,7 +171,6 @@ function getMapTileId(map, xPos, Ypos)
 function calculateCollisionWithMap()
 {
     const player = sprites[Type.PLAYER]
-
 
     switch(player.direction)
     {
@@ -215,11 +196,11 @@ function calculateCollisionWithMap()
         }
 
         break;
-        /*
+     
         case Direction.LEFT:
 
         //Primera colision en (xPos + xSize - 1, yPos)
-        const xPos2 = player.xPos - player.xOffsetCol - player.xSizeCol - 1;
+        const xPos2 = player.xPos + player.xOffsetCol - player.xSizeCol - 1;
         let yPos2 = player.yPos - player.yOffsetCol;
         const isCollision4 = isCollisionWithTile(level1Colisions, xPos2, yPos2);
 
@@ -234,7 +215,7 @@ function calculateCollisionWithMap()
         if (isCollision7)
         {
             const xOverlap2 = Math.floor(xPos2) % BRICK_SIZE + 1
-            player.xPos -= xOverlap2;
+            player.xPos += xOverlap2;
         }
 
         break;
@@ -257,7 +238,7 @@ function calculateCollisionWithMap()
         if (isCollision11)
         {
             xOverlap3 = Math.floor(xPos3) % BRICK_SIZE + 1
-            player.xPos -= xOverlap3;
+            player.yPos += xOverlap3;
         }
 
         break;
@@ -280,11 +261,11 @@ function calculateCollisionWithMap()
         if (isCollision15)
         {
             const xOverlap4 = Math.floor(xPos4) % BRICK_SIZE + 1
-            player.xPos -= xOverlap4;
+            player.yPos -= xOverlap4;
         }
 
         break;
-        */
+        
     }
 }
 

@@ -35,11 +35,12 @@ function gameStart()
 
 function gamePlay()
 {
+    tiempo++;
     movimientoSprites();
-    calculateCollision();
-    vueltaFruta();
+    //calculateCollision();
+    //vueltaFruta();
     vueltaPuntos();
-    vidasDown();
+    //vidasDown();
     updateAnimation();
 
     if (action.pause === true)
@@ -51,15 +52,21 @@ function gamePlay()
 function updateAnimation()
 {
     const player = sprites[Type.PLAYER];
-    const state = player.direction;
-
-    player.animLagCounter++;
-
-    switch(state)
+    if (player.direction === Direction.UP)
     {
-        case Direction.RIGHT:
-            player.xPos = player.xPos + player.speed * lag / 1000;
-        break;
+        //player.yPos = player.yPos - player.speed * lag / 1000;
+    }
+    else if (player.direction === Direction.LEFT)
+    {
+        //player.xPos = player.xPos - player.speed * lag / 1000;
+    }
+    else if (player.direction === Direction.DOWN)
+    {
+        //player.yPos = player.yPos + player.speed * lag / 1000;
+    }
+    else if (player.direction === Direction.RIGHT)
+    {
+        //player.xPos = player.xPos + player.speed * lag / 1000;
     }
 
     updateAnimationFrame(player);
@@ -67,16 +74,20 @@ function updateAnimation()
 
 function updateAnimationFrame(sprite)
 {
+    sprite.animLagCounter++;
 
+    //Cambiamos de frame cuando el lag de animación alcanza animSpeed
     if (sprite.animLagCounter === sprite.animSpeed)
     {
         sprite.frameCounter++;
-        sprite.animLagCounter = 0
-    }
+        sprite.animLagCounter = 0;
+    } 
 
-    if (sprite.animLagCounter === sprite.numberOfFrames)
-    {
-        sprite.frameCounter = 0;
+    //Si hemos llegado al máximo de frames reiniciamos el contador (animación cíclica)
+    if (sprite.frameCounter === sprite.numberOfFrames)
+    {        
+        sprite.frameCounter = 0; 
+        //Aquí pasaríamos al estado OFF tocaría eliminar vidas, etc...
     }
 }
 
@@ -104,6 +115,7 @@ function vueltaPuntos()
         {
             puntos[i].colTile = 0;
             puntos[i].filTile = 16;
+            puntos[i].isCollisionWithPlayer = false;
         }
     }
 }
@@ -114,7 +126,8 @@ function vidasDown()
     {
         if (sprites[i].isCollisionWithPlayer == true)
         {
-            vidas = vidas - 1;
+            vidas -= 1;
+            sprite[i].isCollisionWithPlayer = false;
         }
     }
 }
@@ -137,30 +150,31 @@ function movimientoSprites()
 
     if (action.moveLeft === true)
     {
-        player.xPos -= 3;
-        player.direction = Direction.LEFT;
+        //LEFT
+        player.xPos -= 3
+        player.direction = Direction.UP 
         player.colTile = 1;
         player.filTile = 15;
-        player.speed = 5;
     }
     else if (action.moveRight === true)
     {
-        player.xPos += 3;
-        player.direction = Direction.RIGHT;
+         //RIGHT
+        player.xPos += 3
+        player.direction = Direction.UP 
         player.colTile = 1;
         player.filTile = 14;
     }
     else if (action.moveUp === true)
     {
-        player.yPos -= 3;
-        player.direction = Direction.UP;
+        player.yPos -= 3
+        player.direction = Direction.DOWN 
         player.colTile = 1;
         player.filTile = 13;
     }
     else if (action.moveDown === true)
     {
-        player.yPos += 3;
-        player.direction = Direction.DOWN;
+        player.yPos += 3
+        player.direction = Direction.UP 
         player.colTile = 1;
         player.filTile = 12;
     }
@@ -281,4 +295,5 @@ function movimientoSprites()
         fantasma3.colTile = 0;
         fantasma3.filTile = 11;
     }
+    
 }

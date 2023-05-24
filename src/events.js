@@ -82,3 +82,27 @@ function keyupHandler(event)
           break;
         }
 }
+
+//Función que se llama cada vez que se carga un activo
+function loadHandler()
+{
+    assetsLoaded++;
+    
+    //Una vez se han cargado todos los activos pasamos 
+    if(assetsLoaded === assetsToLoad.length)
+    {
+        //Remove the load event listener
+        for (i = 0; i < tileSets.length; ++i)
+        {
+            tileSets[i].removeEventListener("load", loadHandler, false);
+        }
+        
+
+        console.log("Assets finished loading: " + assetsLoaded);
+        
+        //Start the game
+        gameState = State.GAME_START;
+
+    }
+
+}

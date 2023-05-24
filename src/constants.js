@@ -30,13 +30,11 @@ const Type = {
 
 //Estados de animación de sprites
 const Direction = {
+    //PLAYER y GHOST
     DOWN: 0,
     UP: 1,
     RIGHT: 2,
     LEFT: 3,
-    INVALID: -1,
-    OFF: 4,
-    ON: 5,
 }
 
 //Keyboard Events
@@ -107,7 +105,3 @@ const NUM_SPRITES = 1;
 const FPS = 30;
 
 const BRICK_SIZE = 40;
-
-//Tamaño de los sprites
-const SPRITE_SIZE_X = 30;
-const SPRITE_SIZE_Y = 30;
